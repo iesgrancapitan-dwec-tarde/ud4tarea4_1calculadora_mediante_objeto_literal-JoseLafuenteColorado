@@ -1,0 +1,15 @@
+.calculadora {
+    width: 100vm;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    margin-top: 10px;
+    /* background-color:rgb(235, 232, 232); */
+}
+
+.valor {
+    width: 3em;
+    height: 3em;
+    margin: 0.1em;
+}
