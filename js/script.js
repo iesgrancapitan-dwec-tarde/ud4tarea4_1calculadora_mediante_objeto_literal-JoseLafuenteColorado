@@ -34,13 +34,18 @@ valores.forEach((valor, indice) => {
 });
 
 const funcionamiento = (function calcular() {
-
+    
+    let operador1;
+    let operador2
+    let operador3;
+    let operacion;
+    
     let mostrarValor = 0;
     const boton = document.querySelectorAll(`.valor`);
     boton.forEach((elemento) => {
-
+        
         elemento.addEventListener("click", ()=> {
-
+            
             switch (elemento.textContent) {
                 case "CE":
                     mostrarValor = 0;
@@ -56,22 +61,37 @@ const funcionamiento = (function calcular() {
                     }
                     break;
                 case "=":
-                    //TODO
+                    pantalla.value = eval(operador2 + operacion + operador1);
                     break;
                 case "+":
-                    //TODO
-                    break;
-                case "+":
-                    //TODO
+                    operador2 = operador1;
+                    operacion = "+";
+                    operador1 = 0;
+                    pantalla.value = 0;
                     break;
                 case "-":
-                    //TODO
+                    operador2 = operador1;
+                    operacion = "-";
+                    operador1 = 0;
+                    pantalla.value = 0;
+                    break;
+                case "x":
+                    operador2 = operador1;
+                    operacion = "*";
+                    operador1 = 0;
+                    pantalla.value = 0;
                     break;
                 case "/":
-                    //TODO
+                    operador2 = operador1;
+                    operacion = "/";
+                    operador1 = 0;
+                    pantalla.value = 0;
                     break;
-                case "%":
-                    //TODO
+                case "%": // TODO: Falta hacer el porcentaje correctamente
+                    operador2 = operador1;
+                    operacion = "%";
+                    operador1 = 0;
+                    pantalla.value = 0;
                     break;
                 case "+-":
                     if (pantalla.value == 0) {
@@ -86,9 +106,11 @@ const funcionamiento = (function calcular() {
 
                 default:
                     if (pantalla.value == 0) {
-                        mostrarValor = parseInt(elemento.textContent);
+                        mostrarValor = elemento.textContent;
+                        operador1 = elemento.textContent;
                     } else {
                         mostrarValor += elemento.textContent;
+                        operador1 += elemento.textContent;
                     }
 
                     pantalla.value = mostrarValor;
@@ -98,13 +120,14 @@ const funcionamiento = (function calcular() {
 
         });
 
-
-
-
     });
 
 
 
-
+    
+ 
+    
 
 })();
+
+
